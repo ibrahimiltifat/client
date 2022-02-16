@@ -4,33 +4,30 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState([{}]);
-  // const [weights, setWeights] = useState([
-  //   38, 28, 38, 37, 37, 30, 37, 37, 42, 37, 31, 36, 36, 36, 42, 29, 29, 36, 34,
-  //   39, 39, 24, 39, 39, 38, 26, 38, 38, 35, 35, 22, 42, 40, 40, 20, 40, 34, 36,
-  //   36, 25, 25, 35, 35, 22, 25, 25, 35, 34, 23, 25, 25, 34, 34, 34, 20, 20, 33,
-  //   33, 33, 23, 20, 33, 33, 32, 22, 22, 32, 32, 32, 23, 23, 32, 32, 31, 20, 27,
-  //   31, 31, 31, 20, 29, 31, 30, 30, 24, 27, 30, 30, 30, 29, 23, 28, 28, 28, 28,
-  //   28, 22, 23, 24, 26, 27, 20, 26, 26, 26, 26, 38, 27, 27, 27, 24, 37, 24, 24,
-  //   24, 24, 24, 22, 23, 23, 23, 23, 25, 25, 31, 32, 33, 42,
-  // ]);
+
   const [weights, setWeights] = useState([]);
+  const [weightsArray, setWeightsArray] = useState([]);
   const [listItems, setlistItems] = useState([]);
   const [SUMS, setSUMS] = useState([]);
   const [dSize, setdSize] = useState();
 
   const [bins, setBins] = useState([]);
+  useEffect(() => {
+    callApi();
+  }, [weights]);
 
   const [formValues, setFormValues] = useState([{ name: "", email: "" }]);
   let handleChange = (i, e) => {
     let newFormValues = [...formValues];
+    let newWeights = [...weightsArray];
     // let test = [...weights];
     // let newWeights = [];
     newFormValues[i][e.target.name] = e.target.value;
-    let newWeights = new Array(Number(newFormValues[i].email)).fill(
+    newWeights[i] = new Array(Number(newFormValues[i].email)).fill(
       Number(newFormValues[i].name)
     );
-    let test = [...weights, ...newWeights];
-    setWeights(test);
+    // let test = [...weights, ...newWeights];
+    setWeightsArray(newWeights);
     setFormValues(newFormValues);
   };
 
@@ -72,9 +69,13 @@ function App() {
 
   let handleSubmit = (event) => {
     event.preventDefault();
-    console.log(weights);
+    var newArr = [];
+    for (var i = 0; i < formValues.length; i++) {
+      newArr = newArr.concat(weightsArray[i]);
+    }
+    setWeights(newArr);
     console.log(dSize);
-    callApi();
+    // callApi();
     // fetch("/username", {
     //   method: "POST",
     //   body: JSON.stringify({
