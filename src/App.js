@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "./App.css";
 
 function App() {
   const [data, setData] = useState([{}]);
@@ -75,57 +74,45 @@ function App() {
     }
     setWeights(newArr);
     console.log(dSize);
-    // callApi();
-    // fetch("/username", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     weights,
-    //     dSize: Number(dSize),
-    //   }),
-    //   headers: {
-    //     "Content-type": "application/json; charset=UTF-8",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((message) => {
-    //     console.log(message);
-    //     setBins(message);
-    //     let x = bins.map((number) => <li>{number + " "} </li>);
-    //     setlistItems(x);
-    //     let y = bins.map((number) => (
-    //       <li>{number.reduce((result, number) => result + number)} </li>
-    //     ));
-    //     setSUMS(y);
-    //   });
   };
 
   return (
-    <div>
-      <label>Please Enter Decel Size</label>
-      <input
-        type="number"
-        name="dSize"
-        value={dSize}
-        onChange={(e) => setdSize(e.target.value)}
-      />
-      <form onSubmit={handleSubmit}>
-        {formValues.map((element, index) => (
-          <div className="form-inline" key={index}>
-            <label>Size</label>
-            <input
-              type="text"
-              name="name"
-              value={element.name || ""}
-              onChange={(e) => handleChange(index, e)}
-            />
-            <label>X</label>
-            <input
-              type="text"
-              name="email"
-              value={element.email || ""}
-              onChange={(e) => handleChange(index, e)}
-            />
-            {/* {index ? (
+    <>
+      <header className="headerStyles">
+        <div className="container">
+          <h2>Decel Making software</h2>
+        </div>
+      </header>
+      <div className="container">
+        <div className="card">
+          <label>Please Enter Decel Size</label>
+          <input
+            className="input-group"
+            type="number"
+            name="dSize"
+            value={dSize}
+            onChange={(e) => setdSize(e.target.value)}
+          />
+          <form onSubmit={handleSubmit}>
+            {formValues.map((element, index) => (
+              <div className="form-inline" key={index}>
+                <label>Size</label>
+                <input
+                  className="input-group"
+                  type="text"
+                  name="name"
+                  value={element.name || ""}
+                  onChange={(e) => handleChange(index, e)}
+                />
+                <label>X</label>
+                <input
+                  className="input-group"
+                  type="text"
+                  name="email"
+                  value={element.email || ""}
+                  onChange={(e) => handleChange(index, e)}
+                />
+                {/* {index ? (
               <button
                 type="button"
                 className="button remove"
@@ -134,25 +121,29 @@ function App() {
                 Remove
               </button>
             ) : null} */}
+              </div>
+            ))}
+            <div>
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => addFormFields()}
+              >
+                Add
+              </button>
+              <button className="btn btn-secondary " type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+
+          <div className="flex">
+            <div className="text bins">{listItems}</div>
+            <div className="text sums">{SUMS}</div>
           </div>
-        ))}
-        <div>
-          <button
-            className="button add"
-            type="button"
-            onClick={() => addFormFields()}
-          >
-            Add
-          </button>
-          <button className="button submit" type="submit">
-            Submit
-          </button>
         </div>
-      </form>
-      <div className="bins">{listItems}</div>
-      {/* <div className="bins">{weights}</div> */}
-      <div>{SUMS}</div>
-    </div>
+      </div>
+    </>
   );
 }
 
