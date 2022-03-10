@@ -138,7 +138,7 @@ function App() {
           </form>
 
           <div className="flex">
-            <div className="text bins">{listItems}</div>
+            {/* <div className="text bins">{listItems}</div> */}
             <div className="text sums">{SUMS}</div>
           </div>
         </div>
