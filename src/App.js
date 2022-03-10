@@ -57,7 +57,9 @@ function App() {
       .then((message) => {
         console.log(message);
         setBins(message);
-        let x = message.map((number) => <li>{number + " "} </li>);
+        let list = [];
+        let x = message.map((number) => <ul>{number + " "}</ul>);
+
         setlistItems(x);
         let y = message.map((number) => (
           <li>{number.reduce((result, number) => result + number)} </li>
@@ -138,7 +140,7 @@ function App() {
           </form>
 
           <div className="flex">
-            {/* <div className="text bins">{listItems}</div> */}
+            <div className="text bins">{listItems}</div>
             <div className="text sums">{SUMS}</div>
           </div>
         </div>

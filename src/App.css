@@ -16,6 +16,10 @@ body {
 ul {
   list-style: none;
 }
+
+.bins {
+  color: blue;
+}
 .headerStyles {
   background-color: red;
   color: "#ff6a95";
