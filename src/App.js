@@ -58,7 +58,19 @@ function App() {
         console.log(message);
         setBins(message);
         let list = [];
-        let x = message.map((number) => <ul>{number + " "}</ul>);
+        for (let j = 0; j < message.length; j++) {
+          let x = [];
+          for (let i = 0; i < message[j].length; i++) {
+            if (i === message[j].length - 1) {
+              x.push(message[j][i]);
+            } else {
+              x.push(message[j][i]);
+              x.push("-");
+            }
+          }
+          list.push(x);
+        }
+        let x = list.map((number) => <ul>{number}</ul>);
 
         setlistItems(x);
         let y = message.map((number) => (
