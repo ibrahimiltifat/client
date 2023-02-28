@@ -41,7 +41,7 @@ function App() {
   };
   async function callApi() {
     const response = await fetch(
-      "https://decel-making-software.herokuapp.com/",
+      "https://flask-server-clone-ukyycsmcrq-uw.a.run.app",
       {
         method: "POST",
         body: JSON.stringify({
